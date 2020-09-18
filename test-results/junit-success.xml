@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="0" time="0.963">
+  <testsuite name="index.test.js" errors="0" failures="0" skipped="0" timestamp="2020-09-18T16:44:16" time="0.459" tests="1">
+    <testcase classname=" Converts JUnit report to GitHub annotations" name=" Converts JUnit report to GitHub annotations" time="0.01">
+    </testcase>
+  </testsuite>
+</testsuites>

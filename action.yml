@@ -1,13 +1,23 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: "Add annotations from Jest JUnit report"
+description: "Add annotations from Jest JUnit report"
+
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  github_token:
+    description: "GITHUB_TOKEN"
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
+
+  check_name:
+    description: "The name of the check. For example, code-coverage"
+    required: true
+
+  report_path:
+    description: "File path of a generated HTML report, used for reading failing test cases"
+    required: true
+
+  report_filename:
+    description: "Filename of a generated HTML report"
+    required: true
+
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: "node12"
+  main: "dist/index.js"

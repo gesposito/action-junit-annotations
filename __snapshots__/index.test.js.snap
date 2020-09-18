@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Flat report Converts JUnit XML to GitHub annotations 1`] = `
+Array [
+  Object {
+    "classname": "Converts JUnit report to GitHub annotations",
+    "failure": "Error: test
+at failingCasesFrom (/Users/gesposito/Work/action-junit-annotations/index.js:105:9)
+at Object.&lt;anonymous&gt; (/Users/gesposito/Work/action-junit-annotations/index.test.js:4:24)",
+    "name": "Converts JUnit report to GitHub annotations",
+    "path": "index.test.js",
+    "time": "0.015",
+  },
+]
+`;
+
+exports[`Flat report Converts JUnit XML to GitHub annotations 2`] = `
+Array [
+  Object {
+    "annotation_level": "failure",
+    "end_line": 0,
+    "message": "Error: test
+at failingCasesFrom (/Users/gesposito/Work/action-junit-annotations/index.js:105:9)
+at Object.&lt;anonymous&gt; (/Users/gesposito/Work/action-junit-annotations/index.test.js:4:24)",
+    "path": "index.test.js",
+    "start_line": 0,
+  },
+]
+`;
+
+exports[`Nested report Converts JUnit XML to failing cases in JSON 1`] = `
+Array [
+  Object {
+    "classname": "Nested report Converts failing cases in JSON to GitHub annotations",
+    "failure": "Error: error
+    at Object.&lt;anonymous&gt; (/Users/gesposito/Work/action-junit-annotations/index.test.js:53:11)
+    at Object.asyncJestTest (/Users/gesposito/Work/action-junit-annotations/node_modules/jest-jasmine2/build/jasmineAsyncInstall.js:106:37)
+    at /Users/gesposito/Work/action-junit-annotations/node_modules/jest-jasmine2/build/queueRunner.js:45:12
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (/Users/gesposito/Work/action-junit-annotations/node_modules/jest-jasmine2/build/queueRunner.js:28:19)
+    at /Users/gesposito/Work/action-junit-annotations/node_modules/jest-jasmine2/build/queueRunner.js:75:41",
+    "name": "Nested report Converts failing cases in JSON to GitHub annotations",
+    "path": "index.test.js",
+    "time": "0.001",
+  },
+]
+`;
+
+exports[`Nested report Converts failing cases in JSON to GitHub annotations 1`] = `
+Array [
+  Object {
+    "annotation_level": "failure",
+    "end_line": 0,
+    "message": "Error: error
+    at Object.&lt;anonymous&gt; (/Users/gesposito/Work/action-junit-annotations/index.test.js:53:11)
+    at Object.asyncJestTest (/Users/gesposito/Work/action-junit-annotations/node_modules/jest-jasmine2/build/jasmineAsyncInstall.js:106:37)
+    at /Users/gesposito/Work/action-junit-annotations/node_modules/jest-jasmine2/build/queueRunner.js:45:12
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (/Users/gesposito/Work/action-junit-annotations/node_modules/jest-jasmine2/build/queueRunner.js:28:19)
+    at /Users/gesposito/Work/action-junit-annotations/node_modules/jest-jasmine2/build/queueRunner.js:75:41",
+    "path": "index.test.js",
+    "start_line": 0,
+  },
+]
+`;
