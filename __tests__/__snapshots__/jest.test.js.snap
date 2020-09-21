@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Flat report Converts JUnit XML to GitHub annotations 1`] = `
+exports[`Flat Jest report Converts JUnit XML to GitHub annotations 1`] = `
 Array [
   Object {
     "classname": "Converts JUnit report to GitHub annotations",
@@ -14,7 +14,7 @@ at Object.&lt;anonymous&gt; (/Users/gesposito/Work/action-junit-annotations/inde
 ]
 `;
 
-exports[`Flat report Converts JUnit XML to GitHub annotations 2`] = `
+exports[`Flat Jest report Converts JUnit XML to GitHub annotations 2`] = `
 Array [
   Object {
     "annotation_level": "failure",
@@ -28,7 +28,7 @@ at Object.&lt;anonymous&gt; (/Users/gesposito/Work/action-junit-annotations/inde
 ]
 `;
 
-exports[`Nested report Converts JUnit XML to failing cases in JSON 1`] = `
+exports[`Nested Jest report Converts JUnit XML to failing cases in JSON 1`] = `
 Array [
   Object {
     "classname": "Nested report Converts failing cases in JSON to GitHub annotations",
@@ -46,7 +46,7 @@ Array [
 ]
 `;
 
-exports[`Nested report Converts failing cases in JSON to GitHub annotations 1`] = `
+exports[`Nested Jest report Converts failing cases in JSON to GitHub annotations 1`] = `
 Array [
   Object {
     "annotation_level": "failure",
@@ -63,5 +63,3 @@ Array [
   },
 ]
 `;
-
-exports[`Not found report Does not return failing cases 1`] = `Array []`;

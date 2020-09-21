@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nested Cypress report Converts JUnit XML to failing cases in JSON 1`] = `
+Array [
+  Object {
+    "classname": "By visiting google.com, page contains GitHub",
+    "failure": Object {
+      "#text": "AssertionError: Timed out retrying: Expected to find content: 'GitHub' but never did.
+    at Context.eval (https://www.google.com/__cypress/tests?p=cypress/integration/index_spec.js:97:367)",
+      "message": "Timed out retrying: Expected to find content: &apos;GitHub&apos; but never did.",
+      "type": "AssertionError",
+    },
+    "name": "Internet By visiting google.com, page contains GitHub",
+    "path": "Internet",
+    "time": "5.8030",
+  },
+  Object {
+    "classname": "By visiting google.com, title contains GitHub",
+    "failure": Object {
+      "#text": "AssertionError: Timed out retrying: expected '<title>' to contain 'GitHub'
+    at Context.eval (https://www.google.com/__cypress/tests?p=cypress/integration/index_spec.js:97:472)",
+      "message": "Timed out retrying: expected &apos;&lt;title&gt;&apos; to contain &apos;GitHub&apos;",
+      "type": "AssertionError",
+    },
+    "name": "Internet By visiting google.com, title contains GitHub",
+    "path": "Internet",
+    "time": "4.3790",
+  },
+]
+`;
+
+exports[`Nested Cypress report Converts failing cases in JSON to GitHub annotations 1`] = `
+Array [
+  Object {
+    "annotation_level": "failure",
+    "end_line": 0,
+    "message": Object {
+      "#text": "AssertionError: Timed out retrying: Expected to find content: 'GitHub' but never did.
+    at Context.eval (https://www.google.com/__cypress/tests?p=cypress/integration/index_spec.js:97:367)",
+      "message": "Timed out retrying: Expected to find content: &apos;GitHub&apos; but never did.",
+      "type": "AssertionError",
+    },
+    "path": "Internet",
+    "start_line": 0,
+  },
+  Object {
+    "annotation_level": "failure",
+    "end_line": 0,
+    "message": Object {
+      "#text": "AssertionError: Timed out retrying: expected '<title>' to contain 'GitHub'
+    at Context.eval (https://www.google.com/__cypress/tests?p=cypress/integration/index_spec.js:97:472)",
+      "message": "Timed out retrying: expected &apos;&lt;title&gt;&apos; to contain &apos;GitHub&apos;",
+      "type": "AssertionError",
+    },
+    "path": "Internet",
+    "start_line": 0,
+  },
+]
+`;
