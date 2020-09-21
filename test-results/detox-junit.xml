@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="1" time="33.004">
+  <testsuite name="Logout" errors="0" failures="1" skipped="0" timestamp="2020-09-21T13:04:25" time="32.701" tests="1">
+    <testcase classname="Logout Logout flow Logs out the user" name="e2e/logout.spec.js" time="4.424">
+      <failure>Error: Test Failed: Timed out while waiting for expectation: TOBEVISIBLE WITH MATCHER(identifier: == “menu-button-not-found”) TIMEOUT(3s)
+TIP: To print view hierarchy on failed actions/matches, use loglevel verbose and above.
+    at waitForWithTimeout (e2e/helpers.js:17:75)
+    at _callee$ (e2e/logout.spec.js:16:81)
+    at tryCatch (node_modules/regenerator-runtime/runtime.js:45:40)
+    at Generator.invoke [as _invoke] (node_modules/regenerator-runtime/runtime.js:274:22)
+    at Generator.prototype.&lt;computed&gt; [as next] (node_modules/regenerator-runtime/runtime.js:97:21)
+    at tryCatch (node_modules/regenerator-runtime/runtime.js:45:40)
+    at invoke (node_modules/regenerator-runtime/runtime.js:135:20)
+    at node_modules/regenerator-runtime/runtime.js:170:11
+    at new Promise (&lt;anonymous&gt;)
+    at callInvokeWithMethodAndArg (node_modules/regenerator-runtime/runtime.js:169:16)
+    at AsyncIterator.enqueue (node_modules/regenerator-runtime/runtime.js:192:13)</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

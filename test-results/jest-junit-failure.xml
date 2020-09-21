@@ -3,8 +3,8 @@
   <testsuite name="index.test.js" errors="0" failures="1" skipped="0" timestamp="2020-09-18T16:39:53" time="0.498" tests="1">
     <testcase classname=" Converts JUnit report to GitHub annotations" name="__tests__/index.test.js" time="0.015">
       <failure>Error: test
-at failingCasesFrom (/Users/gesposito/Work/action-junit-annotations/index.js:105:9)
-at Object.&lt;anonymous&gt; (/Users/gesposito/Work/action-junit-annotations/index.test.js:4:24)</failure>
+at failingCasesFrom (action-junit-annotations/index.js:105:9)
+at Object.&lt;anonymous&gt; (action-junit-annotations/index.test.js:4:24)</failure>
     </testcase>
   </testsuite>
 </testsuites>

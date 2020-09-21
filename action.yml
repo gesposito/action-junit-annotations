@@ -16,7 +16,7 @@ inputs:
 
   report_filename:
     description: "Filename of a generated HTML report"
-    required: true
+    # if `report_filename` is not specified it will merge all reports found in `report_path`
 
 runs:
   using: "node12"
