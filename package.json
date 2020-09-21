@@ -28,6 +28,7 @@
     "@actions/core": "^1.2.5",
     "@actions/github": "^4.0.0",
     "fast-xml-parser": "^3.17.4",
+    "junit-report-merger": "^0.0.6",
     "lodash": "^4.17.20"
   },
   "devDependencies": {

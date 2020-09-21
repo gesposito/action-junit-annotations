@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="6" failures="0" time="1.833">
-  <testsuite name="Not found report" errors="0" failures="0" skipped="0" timestamp="2020-09-21T11:34:23" time="0.63" tests="1">
+<testsuites name="jest tests" tests="8" failures="0" time="1.889">
+  <testsuite name="Not found report" errors="0" failures="0" skipped="0" timestamp="2020-09-21T12:37:00" time="0.554" tests="1">
     <testcase classname="Not found report Does not return failing cases" name="__tests__/index.test.js" time="0.005">
     </testcase>
   </testsuite>
-  <testsuite name="Nested Cypress report" errors="0" failures="0" skipped="0" timestamp="2020-09-21T11:34:23" time="0.655" tests="2">
-    <testcase classname="Nested Cypress report Converts JUnit XML to failing cases in JSON" name="__tests__/cypress.test.js" time="0.014">
+  <testsuite name="Flat Jest report" errors="0" failures="0" skipped="0" timestamp="2020-09-21T12:37:00" time="0.567" tests="3">
+    <testcase classname="Flat Jest report Converts Jest JUnit XML to GitHub annotations" name="__tests__/jest.test.js" time="0.012">
+    </testcase>
+    <testcase classname="Nested Jest report Converts Jest JUnit XML to failing cases in JSON" name="__tests__/jest.test.js" time="0.001">
+    </testcase>
+    <testcase classname="Nested Jest report Converts Jest failing cases in JSON to GitHub annotations" name="__tests__/jest.test.js" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="Nested Cypress report" errors="0" failures="0" skipped="0" timestamp="2020-09-21T12:37:00" time="0.785" tests="4">
+    <testcase classname="Nested Cypress report Converts JUnit XML to failing cases in JSON" name="__tests__/cypress.test.js" time="0.019">
     </testcase>
     <testcase classname="Nested Cypress report Converts failing cases in JSON to GitHub annotations" name="__tests__/cypress.test.js" time="0.001">
     </testcase>
-  </testsuite>
-  <testsuite name="Flat Jest report" errors="0" failures="0" skipped="0" timestamp="2020-09-21T11:34:23" time="0.654" tests="3">
-    <testcase classname="Flat Jest report Converts JUnit XML to GitHub annotations" name="__tests__/jest.test.js" time="0.014">
+    <testcase classname="Multiple Cypress reports Converts JUnit XML to failing cases in JSON" name="__tests__/cypress.test.js" time="0.025">
     </testcase>
-    <testcase classname="Nested Jest report Converts JUnit XML to failing cases in JSON" name="__tests__/jest.test.js" time="0.003">
-    </testcase>
-    <testcase classname="Nested Jest report Converts failing cases in JSON to GitHub annotations" name="__tests__/jest.test.js" time="0.001">
+    <testcase classname="Multiple Cypress reports Converts failing cases in JSON to GitHub annotations" name="__tests__/cypress.test.js" time="0.001">
     </testcase>
   </testsuite>
 </testsuites>

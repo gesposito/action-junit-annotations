@@ -1,5 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Multiple Cypress reports Converts JUnit XML to failing cases in JSON 1`] = `
+Array [
+  Object {
+    "classname": "By visiting google.com, page contains GitHub",
+    "failure": Object {
+      "#text": "AssertionError: Timed out retrying: Expected to find content: 'GitHub' but never did.
+    at Context.eval (https://www.google.com/__cypress/tests?p=cypress/integration/github_spec.js:97:130)",
+      "message": "Timed out retrying: Expected to find content: 'GitHub' but never did.",
+      "type": "AssertionError",
+    },
+    "name": "GitHub By visiting google.com, page contains GitHub",
+    "path": "GitHub By visiting google.com, page contains GitHub",
+    "time": "5.9800",
+  },
+  Object {
+    "classname": "By visiting google.com, title contains GitHub",
+    "failure": Object {
+      "#text": "AssertionError: Timed out retrying: expected '<title>' to contain 'GitHub'
+    at Context.eval (https://www.google.com/__cypress/tests?p=cypress/integration/github_spec.js:97:235)",
+      "message": "Timed out retrying: expected '&lt;title>' to contain 'GitHub'",
+      "type": "AssertionError",
+    },
+    "name": "GitHub By visiting google.com, title contains GitHub",
+    "path": "GitHub By visiting google.com, title contains GitHub",
+    "time": "4.3910",
+  },
+]
+`;
+
+exports[`Multiple Cypress reports Converts failing cases in JSON to GitHub annotations 1`] = `
+Array [
+  Object {
+    "annotation_level": "failure",
+    "end_line": 0,
+    "message": Object {
+      "#text": "AssertionError: Timed out retrying: Expected to find content: 'GitHub' but never did.
+    at Context.eval (https://www.google.com/__cypress/tests?p=cypress/integration/github_spec.js:97:130)",
+      "message": "Timed out retrying: Expected to find content: 'GitHub' but never did.",
+      "type": "AssertionError",
+    },
+    "path": "GitHub By visiting google.com, page contains GitHub",
+    "start_line": 0,
+  },
+  Object {
+    "annotation_level": "failure",
+    "end_line": 0,
+    "message": Object {
+      "#text": "AssertionError: Timed out retrying: expected '<title>' to contain 'GitHub'
+    at Context.eval (https://www.google.com/__cypress/tests?p=cypress/integration/github_spec.js:97:235)",
+      "message": "Timed out retrying: expected '&lt;title>' to contain 'GitHub'",
+      "type": "AssertionError",
+    },
+    "path": "GitHub By visiting google.com, title contains GitHub",
+    "start_line": 0,
+  },
+]
+`;
+
 exports[`Nested Cypress report Converts JUnit XML to failing cases in JSON 1`] = `
 Array [
   Object {

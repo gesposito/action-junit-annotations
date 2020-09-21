@@ -1,4 +1,4 @@
-const { failingCasesFrom, annotationsFrom } = require("../index");
+const { failingCasesFrom } = require("../index");
 
 describe("Not found report", () => {
   let failingCases;

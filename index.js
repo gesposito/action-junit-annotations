@@ -1,11 +1,15 @@
 const fs = require("fs").promises;
+const util = require("util");
 
 const core = require("@actions/core");
 const github = require("@actions/github");
 
 const parser = require("fast-xml-parser");
+const merger = require("junit-report-merger");
 const get = require("lodash/get");
 const flattenDeep = require("lodash/flattenDeep");
+
+const mergeFiles = util.promisify(merger.mergeFiles);
 
 // most @actions toolkit packages have async methods
 async function run() {
@@ -15,7 +19,12 @@ async function run() {
     const reportPath = core.getInput("report_path");
     const reportFilename = core.getInput("report_filename");
 
-    const fullPath = `${reportPath}${reportFilename}`;
+    let fullPath;
+    if (reportFilename) {
+      fullPath = `${reportPath}${reportFilename}`;
+    } else {
+      fullPath = await mergeReports(reportPath);
+    }
     const failingCases = await failingCasesFrom(fullPath);
     // suiteName
 
@@ -61,6 +70,22 @@ async function run() {
 }
 
 run();
+
+async function mergeReports(reportPath, reportFilename = "merged.xml") {
+  const fullPath = `${reportPath}${reportFilename}`;
+
+  try {
+    await fs.unlink(fullPath);
+  } catch (error) {
+    core.info(error);
+  }
+
+  const files = await (await fs.readdir(reportPath)).map(
+    (filePath) => `${reportPath}/${filePath}`
+  );
+  await mergeFiles(fullPath, files, []);
+  return fullPath;
+}
 
 async function failingCasesFrom(fullPath) {
   let XML;
@@ -138,4 +163,5 @@ function annotationsFrom(failingCases) {
 module.exports = {
   failingCasesFrom,
   annotationsFrom,
+  mergeReports,
 };

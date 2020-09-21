@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="10.3710" tests="2" failures="2">
+  <testsuite name="Root Suite" timestamp="2020-09-21T11:57:24" tests="0" file="cypress/integration/github_spec.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="GitHub" timestamp="2020-09-21T11:57:24" tests="2" time="10.3710" failures="2">
+    <testcase name="GitHub By visiting google.com, page contains GitHub" time="5.9800" classname="By visiting google.com, page contains GitHub">
+      <failure message="Timed out retrying: Expected to find content: &apos;GitHub&apos; but never did." type="AssertionError"><![CDATA[AssertionError: Timed out retrying: Expected to find content: 'GitHub' but never did.
+    at Context.eval (https://www.google.com/__cypress/tests?p=cypress/integration/github_spec.js:97:130)]]></failure>
+    </testcase>
+    <testcase name="GitHub By visiting google.com, title contains GitHub" time="4.3910" classname="By visiting google.com, title contains GitHub">
+      <failure message="Timed out retrying: expected &apos;&lt;title&gt;&apos; to contain &apos;GitHub&apos;" type="AssertionError"><![CDATA[AssertionError: Timed out retrying: expected '<title>' to contain 'GitHub'
+    at Context.eval (https://www.google.com/__cypress/tests?p=cypress/integration/github_spec.js:97:235)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>
