@@ -15,6 +15,7 @@ const parser = __webpack_require__(7448);
 const merger = __webpack_require__(3081);
 const get = __webpack_require__(6908);
 const flattenDeep = __webpack_require__(6207);
+const take = __webpack_require__(5794);
 
 const mergeFiles = util.promisify(merger.mergeFiles);
 
@@ -64,8 +65,9 @@ async function run() {
           title: "",
           // The summary of the check run. This parameter supports Markdown
           summary: "",
-          // Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the Checks and Files changed tab of the pull request. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests
-          annotations,
+          // Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the Checks and Files changed tab of the pull request.
+          // The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests
+          annotations: take(annotations, 50),
           // Adds images to the output displayed in the GitHub pull request UI
           // images: []
         },
@@ -94,10 +96,10 @@ async function mergeReports(reportPath, reportFilename = "merged.xml") {
   return fullPath;
 }
 
-async function failingCasesFrom(fullPath) {
+async function failingCasesFrom(reportPath) {
   let XML;
   try {
-    XML = await read(fullPath);
+    XML = await fs.readFile(reportPath, "binary");
   } catch (error) {
     core.info(error);
     return [];
@@ -147,24 +149,28 @@ function getPath(tc, ts) {
   return get(tc, "file", get(ts, "file", tc.name));
 }
 
-async function read(reportPath) {
-  const data = await fs.readFile(reportPath, "binary");
-  return data;
-}
-
 function annotationsFrom(failingCases) {
-  return failingCases.map((fc) => ({
-    // The path of the file to add an annotation to. For example, assets/css/main.css
-    path: fc.path,
-    // The start line of the annotation
-    start_line: 0,
-    // The end line of the annotation
-    end_line: 0,
-    // The level of the annotation. Can be one of notice, warning, or failure
-    annotation_level: "failure",
-    // A short description of the feedback for these lines of code. The maximum size is 64 KB
-    message: fc.failure,
-  }));
+  return failingCases.map((fc) => {
+    let message;
+    if (typeof fc.failure === "string") {
+      message = get(fc, "failure", "");
+    } else {
+      // Failure has either a text node or a `message` property, or both
+      message = get(fc, "failure.#text", get(fc, "failure.message", ""));
+    }
+    return {
+      // The path of the file to add an annotation to. For example, assets/css/main.css
+      path: fc.path,
+      // The start line of the annotation
+      start_line: 0,
+      // The end line of the annotation
+      end_line: 0,
+      // The level of the annotation. Can be one of notice, warning, or failure
+      annotation_level: "failure",
+      // A short description of the feedback for these lines of code. The maximum size is 64 KB
+      message,
+    };
+  });
 }
 
 module.exports = {
@@ -11597,6 +11603,44 @@ module.exports = baseIsNative;
 
 /***/ }),
 
+/***/ 8758:
+/***/ ((module) => {
+
+/**
+ * The base implementation of `_.slice` without an iteratee call guard.
+ *
+ * @private
+ * @param {Array} array The array to slice.
+ * @param {number} [start=0] The start position.
+ * @param {number} [end=array.length] The end position.
+ * @returns {Array} Returns the slice of `array`.
+ */
+function baseSlice(array, start, end) {
+  var index = -1,
+      length = array.length;
+
+  if (start < 0) {
+    start = -start > length ? 0 : (length + start);
+  }
+  end = end > length ? length : end;
+  if (end < 0) {
+    end += length;
+  }
+  length = start > end ? 0 : ((end - start) >>> 0);
+  start >>>= 0;
+
+  var result = Array(length);
+  while (++index < length) {
+    result[index] = array[index + start];
+  }
+  return result;
+}
+
+module.exports = baseSlice;
+
+
+/***/ }),
+
 /***/ 6792:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -12950,6 +12994,215 @@ function memoize(func, resolver) {
 memoize.Cache = MapCache;
 
 module.exports = memoize;
+
+
+/***/ }),
+
+/***/ 5794:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var baseSlice = __webpack_require__(8758),
+    toInteger = __webpack_require__(2722);
+
+/**
+ * Creates a slice of `array` with `n` elements taken from the beginning.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Array
+ * @param {Array} array The array to query.
+ * @param {number} [n=1] The number of elements to take.
+ * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
+ * @returns {Array} Returns the slice of `array`.
+ * @example
+ *
+ * _.take([1, 2, 3]);
+ * // => [1]
+ *
+ * _.take([1, 2, 3], 2);
+ * // => [1, 2]
+ *
+ * _.take([1, 2, 3], 5);
+ * // => [1, 2, 3]
+ *
+ * _.take([1, 2, 3], 0);
+ * // => []
+ */
+function take(array, n, guard) {
+  if (!(array && array.length)) {
+    return [];
+  }
+  n = (guard || n === undefined) ? 1 : toInteger(n);
+  return baseSlice(array, 0, n < 0 ? 0 : n);
+}
+
+module.exports = take;
+
+
+/***/ }),
+
+/***/ 9323:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var toNumber = __webpack_require__(1235);
+
+/** Used as references for various `Number` constants. */
+var INFINITY = 1 / 0,
+    MAX_INTEGER = 1.7976931348623157e+308;
+
+/**
+ * Converts `value` to a finite number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.12.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted number.
+ * @example
+ *
+ * _.toFinite(3.2);
+ * // => 3.2
+ *
+ * _.toFinite(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toFinite(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toFinite('3.2');
+ * // => 3.2
+ */
+function toFinite(value) {
+  if (!value) {
+    return value === 0 ? value : 0;
+  }
+  value = toNumber(value);
+  if (value === INFINITY || value === -INFINITY) {
+    var sign = (value < 0 ? -1 : 1);
+    return sign * MAX_INTEGER;
+  }
+  return value === value ? value : 0;
+}
+
+module.exports = toFinite;
+
+
+/***/ }),
+
+/***/ 2722:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var toFinite = __webpack_require__(9323);
+
+/**
+ * Converts `value` to an integer.
+ *
+ * **Note:** This method is loosely based on
+ * [`ToInteger`](http://www.ecma-international.org/ecma-262/7.0/#sec-tointeger).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted integer.
+ * @example
+ *
+ * _.toInteger(3.2);
+ * // => 3
+ *
+ * _.toInteger(Number.MIN_VALUE);
+ * // => 0
+ *
+ * _.toInteger(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toInteger('3.2');
+ * // => 3
+ */
+function toInteger(value) {
+  var result = toFinite(value),
+      remainder = result % 1;
+
+  return result === result ? (remainder ? result - remainder : result) : 0;
+}
+
+module.exports = toInteger;
+
+
+/***/ }),
+
+/***/ 1235:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var isObject = __webpack_require__(3334),
+    isSymbol = __webpack_require__(6403);
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = isObject(other) ? (other + '') : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = value.replace(reTrim, '');
+  var isBinary = reIsBinary.test(value);
+  return (isBinary || reIsOctal.test(value))
+    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+    : (reIsBadHex.test(value) ? NAN : +value);
+}
+
+module.exports = toNumber;
 
 
 /***/ }),
