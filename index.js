@@ -8,6 +8,7 @@ const parser = require("fast-xml-parser");
 const merger = require("junit-report-merger");
 const get = require("lodash/get");
 const flattenDeep = require("lodash/flattenDeep");
+const take = require("lodash/take");
 
 const mergeFiles = util.promisify(merger.mergeFiles);
 
@@ -57,8 +58,9 @@ async function run() {
           title: "",
           // The summary of the check run. This parameter supports Markdown
           summary: "",
-          // Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the Checks and Files changed tab of the pull request. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests
-          annotations,
+          // Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the Checks and Files changed tab of the pull request.
+          // The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests
+          annotations: take(annotations, 50),
           // Adds images to the output displayed in the GitHub pull request UI
           // images: []
         },
@@ -87,10 +89,10 @@ async function mergeReports(reportPath, reportFilename = "merged.xml") {
   return fullPath;
 }
 
-async function failingCasesFrom(fullPath) {
+async function failingCasesFrom(reportPath) {
   let XML;
   try {
-    XML = await read(fullPath);
+    XML = await fs.readFile(reportPath, "binary");
   } catch (error) {
     core.info(error);
     return [];
@@ -138,11 +140,6 @@ function getPath(tc, ts) {
   // Attempts to read path from `file` attribute either on `testcase` or parent `testsuite`
   // resorts to `name` on `testcase` as it's required
   return get(tc, "file", get(ts, "file", tc.name));
-}
-
-async function read(reportPath) {
-  const data = await fs.readFile(reportPath, "binary");
-  return data;
 }
 
 function annotationsFrom(failingCases) {
