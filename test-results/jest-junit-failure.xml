@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites name="jest tests" tests="1" failures="1" time="1.005">
   <testsuite name="index.test.js" errors="0" failures="1" skipped="0" timestamp="2020-09-18T16:39:53" time="0.498" tests="1">
-    <testcase classname=" Converts JUnit report to GitHub annotations" name=" Converts JUnit report to GitHub annotations" time="0.015">
+    <testcase classname=" Converts JUnit report to GitHub annotations" name="__tests__/index.test.js" time="0.015">
       <failure>Error: test
 at failingCasesFrom (/Users/gesposito/Work/action-junit-annotations/index.js:105:9)
 at Object.&lt;anonymous&gt; (/Users/gesposito/Work/action-junit-annotations/index.test.js:4:24)</failure>

@@ -11,7 +11,7 @@ Array [
       "type": "AssertionError",
     },
     "name": "Internet By visiting google.com, page contains GitHub",
-    "path": "Internet",
+    "path": "Internet By visiting google.com, page contains GitHub",
     "time": "5.8030",
   },
   Object {
@@ -23,7 +23,7 @@ Array [
       "type": "AssertionError",
     },
     "name": "Internet By visiting google.com, title contains GitHub",
-    "path": "Internet",
+    "path": "Internet By visiting google.com, title contains GitHub",
     "time": "4.3790",
   },
 ]
@@ -40,7 +40,7 @@ Array [
       "message": "Timed out retrying: Expected to find content: &apos;GitHub&apos; but never did.",
       "type": "AssertionError",
     },
-    "path": "Internet",
+    "path": "Internet By visiting google.com, page contains GitHub",
     "start_line": 0,
   },
   Object {
@@ -52,7 +52,7 @@ Array [
       "message": "Timed out retrying: expected &apos;&lt;title&gt;&apos; to contain &apos;GitHub&apos;",
       "type": "AssertionError",
     },
-    "path": "Internet",
+    "path": "Internet By visiting google.com, title contains GitHub",
     "start_line": 0,
   },
 ]

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites name="jest tests" tests="3" failures="1" time="0.998">
-  <testsuite name="index.test.js" errors="0" failures="1" skipped="0" timestamp="2020-09-18T16:51:25" time="0.494" tests="3">
-    <testcase classname="Flat report Converts JUnit XML to GitHub annotations" name="Flat report Converts JUnit XML to GitHub annotations" time="0.011">
+  <testsuite errors="0" failures="1" skipped="0" timestamp="2020-09-18T16:51:25" time="0.494" tests="3">
+    <testcase classname="Flat report Converts JUnit XML to GitHub annotations" name="__tests__/index.test.js" time="0.011">
     </testcase>
-    <testcase classname="Nested report Converts JUnit XML to failing cases in JSON" name="Nested report Converts JUnit XML to failing cases in JSON" time="0.001">
+    <testcase classname="Nested report Converts JUnit XML to failing cases in JSON" name="__tests__/index.test.js" time="0.001">
     </testcase>
-    <testcase classname="Nested report Converts failing cases in JSON to GitHub annotations" name="Nested report Converts failing cases in JSON to GitHub annotations" time="0.001">
+    <testcase classname="Nested report Converts failing cases in JSON to GitHub annotations" name="__tests__/index.test.js" time="0.001">
       <failure>Error: error
     at Object.&lt;anonymous&gt; (/Users/gesposito/Work/action-junit-annotations/index.test.js:53:11)
     at Object.asyncJestTest (/Users/gesposito/Work/action-junit-annotations/node_modules/jest-jasmine2/build/jasmineAsyncInstall.js:106:37)

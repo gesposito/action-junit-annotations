@@ -7,8 +7,8 @@ Array [
     "failure": "Error: test
 at failingCasesFrom (/Users/gesposito/Work/action-junit-annotations/index.js:105:9)
 at Object.&lt;anonymous&gt; (/Users/gesposito/Work/action-junit-annotations/index.test.js:4:24)",
-    "name": "Converts JUnit report to GitHub annotations",
-    "path": "index.test.js",
+    "name": "__tests__/index.test.js",
+    "path": "__tests__/index.test.js",
     "time": "0.015",
   },
 ]
@@ -22,7 +22,7 @@ Array [
     "message": "Error: test
 at failingCasesFrom (/Users/gesposito/Work/action-junit-annotations/index.js:105:9)
 at Object.&lt;anonymous&gt; (/Users/gesposito/Work/action-junit-annotations/index.test.js:4:24)",
-    "path": "index.test.js",
+    "path": "__tests__/index.test.js",
     "start_line": 0,
   },
 ]
@@ -39,8 +39,8 @@ Array [
     at new Promise (&lt;anonymous&gt;)
     at mapper (/Users/gesposito/Work/action-junit-annotations/node_modules/jest-jasmine2/build/queueRunner.js:28:19)
     at /Users/gesposito/Work/action-junit-annotations/node_modules/jest-jasmine2/build/queueRunner.js:75:41",
-    "name": "Nested report Converts failing cases in JSON to GitHub annotations",
-    "path": "index.test.js",
+    "name": "__tests__/index.test.js",
+    "path": "__tests__/index.test.js",
     "time": "0.001",
   },
 ]
@@ -58,7 +58,7 @@ Array [
     at new Promise (&lt;anonymous&gt;)
     at mapper (/Users/gesposito/Work/action-junit-annotations/node_modules/jest-jasmine2/build/queueRunner.js:28:19)
     at /Users/gesposito/Work/action-junit-annotations/node_modules/jest-jasmine2/build/queueRunner.js:75:41",
-    "path": "index.test.js",
+    "path": "__tests__/index.test.js",
     "start_line": 0,
   },
 ]

@@ -30,8 +30,6 @@ async function run() {
       const octokit = github.getOctokit(githubToken);
 
       // https://docs.github.com/en/rest/reference/checks#create-a-check-run
-      /*
-       */
       await octokit.checks.create({
         // owner
         // repo
@@ -99,16 +97,22 @@ async function failingCasesFrom(fullPath) {
         if (Array.isArray(ts.testcase)) {
           return ts.testcase
             .filter((tc) => tc.failure)
-            .map((tc) => ({ ...tc, path: ts.name }));
+            .map((tc) => ({ ...tc, path: getPath(tc, ts) }));
         } else {
           const tc = ts.testcase;
-          return tc.failure ? [{ ...tc, path: ts.name }] : [];
+          return tc.failure ? [{ ...tc, path: getPath(tc, ts) }] : [];
         }
       })
     );
   }
 
   return failingCases;
+}
+
+function getPath(tc, ts) {
+  // Attempts to read path from `file` attribute either on `testcase` or parent `testsuite`
+  // resorts to `name` on `testcase` as it's required
+  return get(tc, "file", get(ts, "file", tc.name));
 }
 
 async function read(reportPath) {

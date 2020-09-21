@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="4" failures="0" time="0.99">
-  <testsuite name="index.test.js" errors="0" failures="0" skipped="0" timestamp="2020-09-21T08:08:41" time="0.483" tests="4">
-    <testcase classname="Flat report Converts JUnit XML to GitHub annotations" name="Flat report Converts JUnit XML to GitHub annotations" time="0.01">
+<testsuites name="jest tests" tests="6" failures="0" time="1.833">
+  <testsuite name="Not found report" errors="0" failures="0" skipped="0" timestamp="2020-09-21T11:34:23" time="0.63" tests="1">
+    <testcase classname="Not found report Does not return failing cases" name="__tests__/index.test.js" time="0.005">
     </testcase>
-    <testcase classname="Nested report Converts JUnit XML to failing cases in JSON" name="Nested report Converts JUnit XML to failing cases in JSON" time="0.001">
+  </testsuite>
+  <testsuite name="Nested Cypress report" errors="0" failures="0" skipped="0" timestamp="2020-09-21T11:34:23" time="0.655" tests="2">
+    <testcase classname="Nested Cypress report Converts JUnit XML to failing cases in JSON" name="__tests__/cypress.test.js" time="0.014">
     </testcase>
-    <testcase classname="Nested report Converts failing cases in JSON to GitHub annotations" name="Nested report Converts failing cases in JSON to GitHub annotations" time="0">
+    <testcase classname="Nested Cypress report Converts failing cases in JSON to GitHub annotations" name="__tests__/cypress.test.js" time="0.001">
     </testcase>
-    <testcase classname="Not found report Does not return failing cases" name="Not found report Does not return failing cases" time="0.001">
+  </testsuite>
+  <testsuite name="Flat Jest report" errors="0" failures="0" skipped="0" timestamp="2020-09-21T11:34:23" time="0.654" tests="3">
+    <testcase classname="Flat Jest report Converts JUnit XML to GitHub annotations" name="__tests__/jest.test.js" time="0.014">
+    </testcase>
+    <testcase classname="Nested Jest report Converts JUnit XML to failing cases in JSON" name="__tests__/jest.test.js" time="0.003">
+    </testcase>
+    <testcase classname="Nested Jest report Converts failing cases in JSON to GitHub annotations" name="__tests__/jest.test.js" time="0.001">
     </testcase>
   </testsuite>
 </testsuites>

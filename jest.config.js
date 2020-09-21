@@ -4,11 +4,13 @@ module.exports = {
   reporters: [
     "default",
     [
+      // https://github.com/jest-community/jest-junit
       "jest-junit",
       {
         outputDirectory: "test-results",
         outputName: "jest-junit.xml",
-        usePathForSuiteName: "true",
+        // Template string for the name attribute of <testcase>.
+        titleTemplate: "{filepath}",
       },
     ],
   ],
