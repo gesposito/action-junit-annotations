@@ -7,7 +7,7 @@ module.exports = {
       "jest-junit",
       {
         outputDirectory: "test-results",
-        outputName: "junit.xml",
+        outputName: "jest-junit.xml",
         usePathForSuiteName: "true",
       },
     ],

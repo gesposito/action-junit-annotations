@@ -6,7 +6,6 @@ const github = require("@actions/github");
 const parser = require("fast-xml-parser");
 const get = require("lodash/get");
 const flattenDeep = require("lodash/flattenDeep");
-const { fail } = require("assert");
 
 // most @actions toolkit packages have async methods
 async function run() {
@@ -66,7 +65,13 @@ async function run() {
 run();
 
 async function failingCasesFrom(fullPath) {
-  const XML = await read(fullPath);
+  let XML;
+  try {
+    XML = await read(fullPath);
+  } catch (error) {
+    core.info(error);
+    return [];
+  }
 
   const options = {
     attributeNamePrefix: "",

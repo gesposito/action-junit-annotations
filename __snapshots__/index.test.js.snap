@@ -63,3 +63,5 @@ Array [
   },
 ]
 `;
+
+exports[`Not found report Does not return failing cases 1`] = `Array []`;
