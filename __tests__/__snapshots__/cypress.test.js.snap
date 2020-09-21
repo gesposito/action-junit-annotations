@@ -34,24 +34,16 @@ Array [
   Object {
     "annotation_level": "failure",
     "end_line": 0,
-    "message": Object {
-      "#text": "AssertionError: Timed out retrying: Expected to find content: 'GitHub' but never did.
+    "message": "AssertionError: Timed out retrying: Expected to find content: 'GitHub' but never did.
     at Context.eval (https://www.google.com/__cypress/tests?p=cypress/integration/github_spec.js:97:130)",
-      "message": "Timed out retrying: Expected to find content: 'GitHub' but never did.",
-      "type": "AssertionError",
-    },
     "path": "GitHub By visiting google.com, page contains GitHub",
     "start_line": 0,
   },
   Object {
     "annotation_level": "failure",
     "end_line": 0,
-    "message": Object {
-      "#text": "AssertionError: Timed out retrying: expected '<title>' to contain 'GitHub'
+    "message": "AssertionError: Timed out retrying: expected '<title>' to contain 'GitHub'
     at Context.eval (https://www.google.com/__cypress/tests?p=cypress/integration/github_spec.js:97:235)",
-      "message": "Timed out retrying: expected '&lt;title>' to contain 'GitHub'",
-      "type": "AssertionError",
-    },
     "path": "GitHub By visiting google.com, title contains GitHub",
     "start_line": 0,
   },
@@ -92,24 +84,16 @@ Array [
   Object {
     "annotation_level": "failure",
     "end_line": 0,
-    "message": Object {
-      "#text": "AssertionError: Timed out retrying: Expected to find content: 'GitHub' but never did.
+    "message": "AssertionError: Timed out retrying: Expected to find content: 'GitHub' but never did.
     at Context.eval (https://www.google.com/__cypress/tests?p=cypress/integration/index_spec.js:97:367)",
-      "message": "Timed out retrying: Expected to find content: &apos;GitHub&apos; but never did.",
-      "type": "AssertionError",
-    },
     "path": "Internet By visiting google.com, page contains GitHub",
     "start_line": 0,
   },
   Object {
     "annotation_level": "failure",
     "end_line": 0,
-    "message": Object {
-      "#text": "AssertionError: Timed out retrying: expected '<title>' to contain 'GitHub'
+    "message": "AssertionError: Timed out retrying: expected '<title>' to contain 'GitHub'
     at Context.eval (https://www.google.com/__cypress/tests?p=cypress/integration/index_spec.js:97:472)",
-      "message": "Timed out retrying: expected &apos;&lt;title&gt;&apos; to contain &apos;GitHub&apos;",
-      "type": "AssertionError",
-    },
     "path": "Internet By visiting google.com, title contains GitHub",
     "start_line": 0,
   },

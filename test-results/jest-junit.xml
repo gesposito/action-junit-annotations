@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="10" failures="0" time="1.843">
-  <testsuite name="Nested Cypress report" errors="0" failures="0" skipped="0" timestamp="2020-09-21T13:16:21" time="0.446" tests="4">
-    <testcase classname="Nested Cypress report Converts JUnit XML to failing cases in JSON" name="__tests__/cypress.test.js" time="0.012">
-    </testcase>
-    <testcase classname="Nested Cypress report Converts failing cases in JSON to GitHub annotations" name="__tests__/cypress.test.js" time="0.001">
-    </testcase>
-    <testcase classname="Multiple Cypress reports Converts JUnit XML to failing cases in JSON" name="__tests__/cypress.test.js" time="0.026">
-    </testcase>
-    <testcase classname="Multiple Cypress reports Converts failing cases in JSON to GitHub annotations" name="__tests__/cypress.test.js" time="0">
+<testsuites name="jest tests" tests="10" failures="0" time="5.901">
+  <testsuite name="Not found report" errors="0" failures="0" skipped="0" timestamp="2020-09-21T14:51:16" time="1.919" tests="1">
+    <testcase classname="Not found report Does not return failing cases" name="__tests__/index.test.js" time="0.021">
     </testcase>
   </testsuite>
-  <testsuite name="Not found report" errors="0" failures="0" skipped="0" timestamp="2020-09-21T13:16:22" time="0.136" tests="1">
-    <testcase classname="Not found report Does not return failing cases" name="__tests__/index.test.js" time="0.003">
+  <testsuite name="Flat Jest report" errors="0" failures="0" skipped="0" timestamp="2020-09-21T14:51:16" time="2.047" tests="5">
+    <testcase classname="Flat Jest report Converts Jest JUnit XML to GitHub annotations" name="__tests__/jest.test.js" time="0.027">
+    </testcase>
+    <testcase classname="Nested Jest report Converts Jest JUnit XML to failing cases in JSON" name="__tests__/jest.test.js" time="0.004">
+    </testcase>
+    <testcase classname="Nested Jest report Converts Jest failing cases in JSON to GitHub annotations" name="__tests__/jest.test.js" time="0.001">
+    </testcase>
+    <testcase classname="Folder Jest reports Converts Jest JUnit XML folder to failing cases in JSON" name="__tests__/jest.test.js" time="0.061">
+    </testcase>
+    <testcase classname="Folder Jest reports Converts Jest failing cases in JSON to GitHub annotations" name="__tests__/jest.test.js" time="0.005">
     </testcase>
   </testsuite>
-  <testsuite name="Flat Jest report" errors="0" failures="0" skipped="0" timestamp="2020-09-21T13:16:22" time="0.146" tests="5">
-    <testcase classname="Flat Jest report Converts Jest JUnit XML to GitHub annotations" name="__tests__/jest.test.js" time="0.005">
+  <testsuite name="Nested Cypress report" errors="0" failures="0" skipped="0" timestamp="2020-09-21T14:51:16" time="2.08" tests="4">
+    <testcase classname="Nested Cypress report Converts JUnit XML to failing cases in JSON" name="__tests__/cypress.test.js" time="0.027">
     </testcase>
-    <testcase classname="Nested Jest report Converts Jest JUnit XML to failing cases in JSON" name="__tests__/jest.test.js" time="0.001">
+    <testcase classname="Nested Cypress report Converts failing cases in JSON to GitHub annotations" name="__tests__/cypress.test.js" time="0.005">
     </testcase>
-    <testcase classname="Nested Jest report Converts Jest failing cases in JSON to GitHub annotations" name="__tests__/jest.test.js" time="0">
+    <testcase classname="Multiple Cypress reports Converts JUnit XML to failing cases in JSON" name="__tests__/cypress.test.js" time="0.102">
     </testcase>
-    <testcase classname="Folder Jest reports Converts Jest JUnit XML folder to failing cases in JSON" name="__tests__/jest.test.js" time="0.006">
-    </testcase>
-    <testcase classname="Folder Jest reports Converts Jest failing cases in JSON to GitHub annotations" name="__tests__/jest.test.js" time="0.001">
+    <testcase classname="Multiple Cypress reports Converts failing cases in JSON to GitHub annotations" name="__tests__/cypress.test.js" time="0.004">
     </testcase>
   </testsuite>
 </testsuites>

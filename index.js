@@ -146,18 +146,27 @@ async function read(reportPath) {
 }
 
 function annotationsFrom(failingCases) {
-  return failingCases.map((fc) => ({
-    // The path of the file to add an annotation to. For example, assets/css/main.css
-    path: fc.path,
-    // The start line of the annotation
-    start_line: 0,
-    // The end line of the annotation
-    end_line: 0,
-    // The level of the annotation. Can be one of notice, warning, or failure
-    annotation_level: "failure",
-    // A short description of the feedback for these lines of code. The maximum size is 64 KB
-    message: fc.failure,
-  }));
+  return failingCases.map((fc) => {
+    let message;
+    if (typeof fc.failure === "string") {
+      message = get(fc, "failure", "");
+    } else {
+      // Failure has either a text node or a `message` property, or both
+      message = get(fc, "failure.#text", get(fc, "failure.message", ""));
+    }
+    return {
+      // The path of the file to add an annotation to. For example, assets/css/main.css
+      path: fc.path,
+      // The start line of the annotation
+      start_line: 0,
+      // The end line of the annotation
+      end_line: 0,
+      // The level of the annotation. Can be one of notice, warning, or failure
+      annotation_level: "failure",
+      // A short description of the feedback for these lines of code. The maximum size is 64 KB
+      message,
+    };
+  });
 }
 
 module.exports = {
