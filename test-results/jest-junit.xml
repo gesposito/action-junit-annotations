@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="12" failures="0" time="1.353">
-  <testsuite name="Workflow report" errors="0" failures="0" skipped="0" timestamp="2020-09-24T07:38:23" time="0.374" tests="2">
-    <testcase classname="Workflow report Converts JUnit XML to failing cases in JSON" name="__tests__/workflow.test.js" time="0.015">
+<testsuites name="jest tests" tests="14" failures="0" time="1.901">
+  <testsuite name="Workflow report" errors="0" failures="0" skipped="0" timestamp="2020-09-24T14:59:50" time="0.653" tests="2">
+    <testcase classname="Workflow report Converts JUnit XML to failing cases in JSON" name="__tests__/workflow.test.js" time="0.01">
     </testcase>
     <testcase classname="Workflow report Converts failing cases in JSON to GitHub annotations" name="__tests__/workflow.test.js" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="Flat Jest report" errors="0" failures="0" skipped="0" timestamp="2020-09-24T07:38:23" time="0.162" tests="5">
-    <testcase classname="Flat Jest report Converts Jest JUnit XML to GitHub annotations" name="__tests__/jest.test.js" time="0.005">
+  <testsuite name="Workflow report" errors="0" failures="0" skipped="0" timestamp="2020-09-24T14:59:50" time="0.649" tests="2">
+    <testcase classname="Workflow report Converts JUnit XML to failing cases in JSON" name="__tests__/brakeman.test.js" time="0.011">
     </testcase>
-    <testcase classname="Nested Jest report Converts Jest JUnit XML to failing cases in JSON" name="__tests__/jest.test.js" time="0.001">
-    </testcase>
-    <testcase classname="Nested Jest report Converts Jest failing cases in JSON to GitHub annotations" name="__tests__/jest.test.js" time="0.001">
-    </testcase>
-    <testcase classname="Folder Jest reports Converts Jest JUnit XML folder to failing cases in JSON" name="__tests__/jest.test.js" time="0.008">
-    </testcase>
-    <testcase classname="Folder Jest reports Converts Jest failing cases in JSON to GitHub annotations" name="__tests__/jest.test.js" time="0">
+    <testcase classname="Workflow report Converts failing cases in JSON to GitHub annotations" name="__tests__/brakeman.test.js" time="0.002">
     </testcase>
   </testsuite>
-  <testsuite name="Nested Cypress report" errors="0" failures="0" skipped="0" timestamp="2020-09-24T07:38:23" time="0.148" tests="4">
-    <testcase classname="Nested Cypress report Converts JUnit XML to failing cases in JSON" name="__tests__/cypress.test.js" time="0.009">
+  <testsuite name="Nested Cypress report" errors="0" failures="0" skipped="0" timestamp="2020-09-24T14:59:50" time="0.671" tests="4">
+    <testcase classname="Nested Cypress report Converts JUnit XML to failing cases in JSON" name="__tests__/cypress.test.js" time="0.011">
     </testcase>
     <testcase classname="Nested Cypress report Converts failing cases in JSON to GitHub annotations" name="__tests__/cypress.test.js" time="0.001">
     </testcase>
-    <testcase classname="Multiple Cypress reports Converts JUnit XML to failing cases in JSON" name="__tests__/cypress.test.js" time="0.007">
+    <testcase classname="Multiple Cypress reports Converts JUnit XML to failing cases in JSON" name="__tests__/cypress.test.js" time="0.015">
     </testcase>
     <testcase classname="Multiple Cypress reports Converts failing cases in JSON to GitHub annotations" name="__tests__/cypress.test.js" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="Not found report" errors="0" failures="0" skipped="0" timestamp="2020-09-24T07:38:24" time="0.126" tests="1">
+  <testsuite name="Flat Jest report" errors="0" failures="0" skipped="0" timestamp="2020-09-24T14:59:50" time="0.669" tests="5">
+    <testcase classname="Flat Jest report Converts Jest JUnit XML to GitHub annotations" name="__tests__/jest.test.js" time="0.01">
+    </testcase>
+    <testcase classname="Nested Jest report Converts Jest JUnit XML to failing cases in JSON" name="__tests__/jest.test.js" time="0.002">
+    </testcase>
+    <testcase classname="Nested Jest report Converts Jest failing cases in JSON to GitHub annotations" name="__tests__/jest.test.js" time="0.001">
+    </testcase>
+    <testcase classname="Folder Jest reports Converts Jest JUnit XML folder to failing cases in JSON" name="__tests__/jest.test.js" time="0.012">
+    </testcase>
+    <testcase classname="Folder Jest reports Converts Jest failing cases in JSON to GitHub annotations" name="__tests__/jest.test.js" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Not found report" errors="0" failures="0" skipped="0" timestamp="2020-09-24T14:59:51" time="0.147" tests="1">
     <testcase classname="Not found report Does not return failing cases" name="__tests__/index.test.js" time="0.003">
     </testcase>
   </testsuite>

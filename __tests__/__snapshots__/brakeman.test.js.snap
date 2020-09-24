@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Workflow report Converts JUnit XML to failing cases in JSON 1`] = `
+Array [
+  Object {
+    "classname": "Brakeman::CheckExecute",
+    "failure": Object {
+      "#text": "(High) Command Injection - Possible command injection near line 32 in app/controllers/users_controller.rb",
+      "brakeman:code": "",
+      "brakeman:confidence": "High",
+      "brakeman:file": "app/controllers/users_controller.rb",
+      "brakeman:fingerprint": "3949fc33d3d8408a7d4f3fb7d87e83ea771419e36833160218462b8c61d59135",
+      "brakeman:line": "32",
+      "message": "Possible command injection",
+      "type": "Command Injection",
+    },
+    "name": "run_check",
+    "path": "run_check",
+    "time": "0",
+  },
+  Object {
+    "classname": "Brakeman::CheckMassAssignment",
+    "failure": Object {
+      "#text": "(Medium) Mass Assignment - Specify exact keys allowed for mass assignment instead of using \`permit!\` which allows any keys near line 32 in app/controllers/posts_controller.rb: params.permit!",
+      "brakeman:code": "",
+      "brakeman:confidence": "Medium",
+      "brakeman:file": "app/controllers/posts_controller.rb",
+      "brakeman:fingerprint": "2f085da1d4b8bbc0e44f00c7a59ab8549640210dba219796aa63a6daead826d7",
+      "brakeman:line": "32",
+      "message": "Specify exact keys allowed for mass assignment instead of using \`permit!\` which allows any keys",
+      "type": "Mass Assignment",
+    },
+    "name": "run_check",
+    "path": "run_check",
+    "time": "0",
+  },
+]
+`;
+
+exports[`Workflow report Converts failing cases in JSON to GitHub annotations 1`] = `
+Array [
+  Object {
+    "annotation_level": "failure",
+    "end_line": 0,
+    "message": "(High) Command Injection - Possible command injection near line 32 in app/controllers/users_controller.rb",
+    "path": "run_check",
+    "start_line": 0,
+  },
+  Object {
+    "annotation_level": "failure",
+    "end_line": 0,
+    "message": "(Medium) Mass Assignment - Specify exact keys allowed for mass assignment instead of using \`permit!\` which allows any keys near line 32 in app/controllers/posts_controller.rb: params.permit!",
+    "path": "run_check",
+    "start_line": 0,
+  },
+]
+`;

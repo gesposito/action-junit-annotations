@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites xmlns:brakeman="https://brakemanscanner.org/">
+   <brakeman:properties xml:id="scan_info">
+      <brakeman:property brakeman:name="app_path" brakeman:value="/home/runner/work/app/app/api" />
+      <brakeman:property brakeman:name="rails_version" brakeman:value="5.2.4.4" />
+      <brakeman:property brakeman:name="security_warnings" brakeman:value="12" />
+      <brakeman:property brakeman:name="start_time" brakeman:value="2020-09-23T23:29:25+00:00" />
+      <brakeman:property brakeman:name="end_time" brakeman:value="2020-09-23T23:29:28+00:00" />
+      <brakeman:property brakeman:name="duration" brakeman:value="2.922948884" />
+      <brakeman:property brakeman:name="checks_performed" brakeman:value="BasicAuth,BasicAuthTimingAttack,CrossSiteScripting,ContentTag,CookieSerialization,CreateWith,CSRFTokenForgeryCVE,DefaultRoutes,Deserialize,DetailedExceptions,DigestDoS,DynamicFinders,EscapeFunction,Evaluation,Execute,FileAccess,FileDisclosure,FilterSkipping,ForgerySetting,HeaderDoS,I18nXSS,JRubyXML,JSONEncoding,JSONEntityEscape,JSONParsing,LinkTo,LinkToHref,MailTo,MassAssignment,MimeTypeDoS,ModelAttrAccessible,ModelAttributes,ModelSerialize,NestedAttributes,NestedAttributesBypass,NumberToCurrency,PageCachingCVE,PermitAttributes,QuoteTableName,Redirect,RegexDoS,Render,RenderDoS,RenderInline,ResponseSplitting,RouteDoS,SafeBufferManipulation,SanitizeMethods,SelectTag,SelectVulnerability,Send,SendFile,SessionManipulation,SessionSettings,SimpleFormat,SingleQuotes,SkipBeforeFilter,SprocketsPathTraversal,SQL,SQLCVEs,SSLVerify,StripTags,SymbolDoSCVE,TemplateInjection,TranslateBug,UnsafeReflection,ValidationRegex,WithoutProtection,XMLDoS,YAMLParsing" />
+      <brakeman:property brakeman:name="number_of_controllers" brakeman:value="77" />
+      <brakeman:property brakeman:name="number_of_models" brakeman:value="76" />
+      <brakeman:property brakeman:name="ruby_version" brakeman:value="37" />
+      <brakeman:property brakeman:name="number_of_templates" brakeman:value="2.7.1" />
+      <brakeman:property brakeman:name="brakeman_version" brakeman:value="4.9.1" />
+   </brakeman:properties>
+   <brakeman:errors />
+   <brakeman:obsolete />
+   <brakeman:ignored />
+   <testsuite errors="0" failures="1" hostname="fv-az128" id="1" name="app/controllers/users_controller.rb" package="brakeman" tests="70" time="0" timestamp="2020-09-23T23:29:25">
+      <properties />
+      <testcase classname="Brakeman::CheckExecute" name="run_check" time="0">
+         <failure brakeman:code="" brakeman:confidence="High" brakeman:file="app/controllers/users_controller.rb" brakeman:fingerprint="3949fc33d3d8408a7d4f3fb7d87e83ea771419e36833160218462b8c61d59135" brakeman:line="32" message="Possible command injection" type="Command Injection">(High) Command Injection - Possible command injection near line 32 in app/controllers/users_controller.rb</failure>
+      </testcase>
+      <system-out />
+      <system-err />
+   </testsuite>
+   <testsuite errors="0" failures="1" hostname="fv-az128" id="2" name="app/controllers/posts_controller.rb" package="brakeman" tests="70" time="0" timestamp="2020-09-23T23:29:25">
+      <properties />
+      <testcase classname="Brakeman::CheckMassAssignment" name="run_check" time="0">
+         <failure brakeman:code="" brakeman:confidence="Medium" brakeman:file="app/controllers/posts_controller.rb" brakeman:fingerprint="2f085da1d4b8bbc0e44f00c7a59ab8549640210dba219796aa63a6daead826d7" brakeman:line="32" message="Specify exact keys allowed for mass assignment instead of using `permit!` which allows any keys" type="Mass Assignment">(Medium) Mass Assignment - Specify exact keys allowed for mass assignment instead of using `permit!` which allows any keys near line 32 in app/controllers/posts_controller.rb: params.permit!</failure>
+      </testcase>
+      <system-out />
+      <system-err />
+   </testsuite>
+</testsuites>
