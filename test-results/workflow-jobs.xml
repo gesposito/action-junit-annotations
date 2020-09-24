@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="10" errors="0" failures="1" skipped="3" name="workflow name">
+   <testsuite tests="10" errors="0" failures="1" skipped="3" name="Rails Unit Tests">
+      <testcase name="Set up job" classname="Set up job" />
+      <testcase name="Initialize containers" classname="Initialize containers" />
+      <testcase name="Run actions/checkout@v2" classname="Run actions/checkout@v2" />
+      <testcase name="Break" classname="Break">
+         <error>workflow name - Rails Unit Tests - Break</error>
+      </testcase>
+      <testcase name="Set up Ruby" classname="Set up Ruby">
+         <skipped />
+      </testcase>
+      <testcase name="Run actions/cache@v1" classname="Run actions/cache@v1">
+         <skipped />
+      </testcase>
+      <testcase name="Rails Unit Tests" classname="Rails Unit Tests">
+         <skipped />
+      </testcase>
+      <testcase name="Post Run actions/checkout@v2" classname="Post Run actions/checkout@v2" />
+      <testcase name="Stop containers" classname="Stop containers" />
+      <testcase name="Complete job" classname="Complete job" />
+   </testsuite>
+</testsuites>

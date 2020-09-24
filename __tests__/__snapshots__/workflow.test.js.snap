@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Workflow report Converts JUnit XML to failing cases in JSON 1`] = `
+Array [
+  Object {
+    "classname": "Break",
+    "error": "workflow name - Rails Unit Tests - Break",
+    "name": "Break",
+    "path": "Break",
+  },
+]
+`;
+
+exports[`Workflow report Converts failing cases in JSON to GitHub annotations 1`] = `
+Array [
+  Object {
+    "annotation_level": "failure",
+    "end_line": 0,
+    "message": "workflow name - Rails Unit Tests - Break",
+    "path": "Break",
+    "start_line": 0,
+  },
+]
+`;
