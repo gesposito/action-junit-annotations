@@ -34,8 +34,6 @@ async function run() {
       fullPath = await mergeReports(reportPath);
     }
     const failingCases = await failingCasesFrom(fullPath);
-    // suiteName
-
     if (failingCases.length) {
       core.info(`${failingCases.length} failures found`);
 
@@ -130,11 +128,13 @@ async function failingCasesFrom(reportPath) {
       failingSuites.map((ts) => {
         if (Array.isArray(ts.testcase)) {
           return ts.testcase
-            .filter((tc) => tc.failure)
+            .filter((tc) => tc.failure || tc.error)
             .map((tc) => ({ ...tc, path: getPath(tc, ts) }));
         } else {
           const tc = ts.testcase;
-          return tc.failure ? [{ ...tc, path: getPath(tc, ts) }] : [];
+          return tc.failure || tc.error
+            ? [{ ...tc, path: getPath(tc, ts) }]
+            : [];
         }
       })
     );
@@ -154,10 +154,16 @@ function annotationsFrom(failingCases) {
     let message;
     if (typeof fc.failure === "string") {
       message = get(fc, "failure", "");
-    } else {
-      // Failure has either a text node or a `message` property, or both
+    } else if (typeof fc.error === "string") {
+      message = get(fc, "error", "");
+    } else if (fc.failure) {
+      // <failure /> has either a text node or a `message` property, or both
       message = get(fc, "failure.#text", get(fc, "failure.message", ""));
+    } else if (fc.error) {
+      // or <error /> has a text node
+      message = get(fc, "error.#text", "");
     }
+
     return {
       // The path of the file to add an annotation to. For example, assets/css/main.css
       path: fc.path,
