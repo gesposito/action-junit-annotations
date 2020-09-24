@@ -111,18 +111,26 @@ async function failingCasesFrom(reportPath) {
   const json = parser.parse(XML, options);
   const testsuites = get(json, "testsuites");
   const failures = get(testsuites, "failures");
+  const testsuite = get(testsuites, "testsuite");
+
+  let tsFailures = 0;
+  if (Array.isArray(testsuite)) {
+    tsFailures = testsuite.reduce(
+      (accumulator, ts) => accumulator + Number(ts.failures),
+      0
+    );
+  }
 
   let failingCases = [];
-  if (Number(failures) > 0) {
+  if (Number(failures) > 0 || tsFailures > 0) {
     let failingSuites;
 
-    if (Array.isArray(testsuites.testsuite)) {
-      failingSuites = testsuites.testsuite.filter((ts) => {
+    if (Array.isArray(testsuite)) {
+      failingSuites = testsuite.filter((ts) => {
         return Number(ts.failures) > 0;
       });
     } else {
-      failingSuites =
-        Number(testsuites.testsuite.failures) > 0 ? [testsuites.testsuite] : [];
+      failingSuites = Number(testsuite.failures) > 0 ? [testsuite] : [];
     }
     failingCases = flattenDeep(
       failingSuites.map((ts) => {
