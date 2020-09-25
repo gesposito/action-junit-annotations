@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/gesposito/action-junit-annotations#readme",
   "dependencies": {
-    "@actions/core": "^1.2.5",
+    "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
     "fast-xml-parser": "^3.17.4",
     "junit-report-merger": "^0.0.6",
