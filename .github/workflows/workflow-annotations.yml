@@ -1,4 +1,4 @@
-name: Add annotations from Jest JUnit report
+name: Add workflow annotations from Jest JUnit report
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   annotations:
-    name: Add annotations
+    name: Add workflow annotations
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,11 +32,10 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
 
-      - name: Add GitHub check annotations
+      - name: Add GitHub workflow annotations
         uses: gesposito/action-junit-annotations@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           check_name: Failing Jest test cases
           report_path: "./test-results/"
           report_filename: "jest-junit-nested-failure.xml"
-          use_workflow_commands: false

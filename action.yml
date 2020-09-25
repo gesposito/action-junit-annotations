@@ -18,6 +18,11 @@ inputs:
     description: "Filename of a generated HTML report"
     # if `report_filename` is not specified it will merge all reports found in `report_path`
 
+  # https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions
+  use_workflow_commands:
+    description: "Add annotations with Workflow commands instead of GitHub API"
+    default: true
+
 runs:
   using: "node12"
   main: "dist/index.js"

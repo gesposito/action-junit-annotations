@@ -2,6 +2,7 @@ const fs = require("fs").promises;
 const util = require("util");
 
 const core = require("@actions/core");
+const command = require("@actions/core/lib/command");
 const github = require("@actions/github");
 
 const parser = require("fast-xml-parser");
@@ -19,6 +20,7 @@ async function run() {
     const checkName = core.getInput("check_name");
     const reportPath = core.getInput("report_path");
     const reportFilename = core.getInput("report_filename");
+    const useWorkflowCommands = core.getInput("use_workflow_commands");
 
     let fullPath;
     if (reportFilename) {
@@ -27,42 +29,34 @@ async function run() {
       fullPath = await mergeReports(reportPath);
     }
     const failingCases = await failingCasesFrom(fullPath);
+    core.info(`${failingCases.length} failures found`);
     if (failingCases.length) {
-      core.info(`${failingCases.length} failures found`);
-
       const pullRequest = github.context.payload.pull_request;
       const head_sha =
         (pullRequest && pullRequest.head.sha) || github.context.sha;
       const annotations = annotationsFrom(failingCases);
 
-      const octokit = github.getOctokit(githubToken);
-
-      // https://docs.github.com/en/rest/reference/checks#create-a-check-run
-      await octokit.checks.create({
-        // owner
-        // repo
-        ...github.context.repo,
-        // The name of the check. For example, "code-coverage"
-        name: checkName || "Failures",
-        // The SHA of the commit
-        head_sha,
-        // The current status. Can be one of queued, in_progress, or completed
-        status: "completed",
-        // The final conclusion of the check. Can be one of success, failure, neutral, cancelled, skipped, timed_out, or action_required
-        conclusion: "failure",
-        // Check runs can accept a variety of data in the output object, including a title and summary and can optionally provide descriptive details about the run
-        output: {
-          // The title of the check run
-          title: "",
-          // The summary of the check run. This parameter supports Markdown
-          summary: "",
-          // Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the Checks and Files changed tab of the pull request.
-          // The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests
-          annotations: take(annotations, 50),
-          // Adds images to the output displayed in the GitHub pull request UI
-          // images: []
-        },
-      });
+      if (useWorkflowCommands) {
+        core.info(`Adding annotations with Workflow commands`);
+        // https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions
+        annotations.map(
+          ({ path, start_line, end_line, annotation_level, message }) => {
+            command.issueCommand(
+              "error", // or warning
+              { file: path, line: start_line, col: 0 },
+              message
+            );
+          }
+        );
+      } else {
+        core.info(`Adding annotations with GitHub Checks API`);
+        await createCheckAnnotations(
+          githubToken,
+          checkName,
+          head_sha,
+          annotations
+        );
+      }
     }
   } catch (error) {
     core.setFailed(error.message);
@@ -70,6 +64,40 @@ async function run() {
 }
 
 run();
+
+async function createCheckAnnotations(
+  githubToken,
+  checkName,
+  head_sha,
+  annotations
+) {
+  const octokit = github.getOctokit(githubToken);
+
+  // https://docs.github.com/en/rest/reference/checks#create-a-check-run
+  await octokit.checks.create({
+    // owner
+    // repo
+    ...github.context.repo,
+    // The name of the check. For example, "code-coverage"
+    name: checkName || "Failures",
+    // The SHA of the commit
+    head_sha,
+    // The current status. Can be one of queued, in_progress, or completed
+    status: "completed",
+    // The final conclusion of the check. Can be one of success, failure, neutral, cancelled, skipped, timed_out, or action_required
+    conclusion: "failure",
+    // Check runs can accept a variety of data in the output object, including a title and summary and can optionally provide descriptive details about the run
+    output: {
+      // The title of the check run
+      title: "",
+      // The summary of the check run. This parameter supports Markdown
+      summary: "",
+      // Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the Checks and Files changed tab of the pull request.
+      // The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests
+      annotations: take(annotations, 50),
+    },
+  });
+}
 
 async function mergeReports(reportPath, reportFilename = "merged.xml") {
   const fullPath = `${reportPath}${reportFilename}`;
