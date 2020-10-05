@@ -35,6 +35,6 @@
     "@vercel/ncc": "^0.24.0",
     "eslint": "^7.4.0",
     "jest": "^26.1.0",
-    "jest-junit": "^11.1.0"
+    "jest-junit": "^12.0.0"
   }
 }
